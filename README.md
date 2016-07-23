@@ -87,9 +87,9 @@ div._img_input:hover {
   $(window).load(function(){
     //you must to change to accept attribute. 
     setev_change_inputfile($("input[type='file'][accept='text/csv']"),
-                           my_callback__file);
+                           my_callback_file);
     setev_change_inputimg($("input[type='file'][accept='image/*']"),
-                           callback_img);
+                           my_callback_img);
   });
   
   function my_callback_file(data, file) {
