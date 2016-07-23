@@ -108,7 +108,37 @@ div._img_input:hover {
 ```
 
 ## server side examples
-for java servlet
-
-
+sample code for java servlet
+```
+public void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws IOException, ServletException{
+    String path = request.getPathInfo();
+    String res_str = "ng";
+    if (path.equals("/upload/file")) {
+      String csv = request.getParameter("data");
+      String filename = request.getParameter("falename");
+      String[] ary_csv = csv.split("\n", 0);
+      .........
+      res_str= "ok";
+    }else if (path.equals("/upload/img")) {
+      String dataurl = request.getParameter("data");
+      byte[] buf = Base64.getDecoder().decode(dataurl.getBytes());
+      BufferedOutputStream out = null;
+      String image_file = "sample.img";
+      try {
+        File destImage = new File(image_file);
+        out = new BufferedOutputStream(new FileOutputStream(destImage));
+        out.write(buf);
+        out.flush();
+      }catch (Exception e) {
+      } finally {
+        if (out != null)
+          out.close();
+      }
+      .........
+      res_str= "ok";
+     }
+      Util.setJsonResponse(response, res_str);
+      .........
+```
 
