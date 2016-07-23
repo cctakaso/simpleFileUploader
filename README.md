@@ -9,6 +9,7 @@ simple uploader for image or text or binary others file.
 <meta charset="utf-8" />
 <link rel="stylesheet" href="css/jquery-ui.min.css">
 <script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/simeta.js"></script>
 <script src="js/sfuploader.js"></script>
 .......
 <style type="text/css">
