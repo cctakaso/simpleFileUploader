@@ -1,5 +1,5 @@
 # simpleFileUploader
-simple uploader for image or text or binary others file.
+simple javascript file uploader for image or text or binary others files.
 
 ##how to use
 ```
