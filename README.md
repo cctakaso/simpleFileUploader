@@ -106,3 +106,9 @@ div._img_input:hover {
 </body>
 </html>
 ```
+
+## server side examples
+for java servlet
+
+
+
