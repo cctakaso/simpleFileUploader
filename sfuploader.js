@@ -3,47 +3,47 @@
 */
 function setev_change_inputfile($input, $func) {
 
-	$input.unbind();
-	$input.change(function(evt) {
-		var file = evt.target.files[0];
-		var reader = new FileReader();
-		reader.readAsBinaryString(file);
-		reader.onload = function(event) {
-			var result = event.target.result;
+  $input.unbind();
+  $input.change(function(evt) {
+    var file = evt.target.files[0];
+    var reader = new FileReader();
+    reader.readAsBinaryString(file);
+    reader.onload = function(event) {
+      var result = event.target.result;
       if ($func)
-  			$func(result, file);
+        $func(result, file);
       else
         def_callback_file(result, file);
     };
-		reader.onerror = function() {
-			console.log('file read error!' + file.fileName);
-		};
+    reader.onerror = function() {
+      console.log('file read error!' + file.fileName);
+    };
     this.value=null;
-	});
+  });
 }
 
 ///default callback function
 function def_callback_file(data, file) {
-	try{
-  	$.ajaxSetup({scriptCharset:'utf-8'});
-  	ajax_res = $.ajax({
-  		type: 'POST',
-  		async: false,
-  		url: "upload/file,
-  		dataType: 'json',
-  		data:{
-  				data: data,
-  				filename: file.name,
-  		},
-  		success: function(data) {
-  		  console.log('success!');
-  		 }
-  		},
-  		error: function(XMLHttpRequest, textStatus, errorThrown) {
-  		  console.log('error!');
-  		}
-	}).responseText;
-	}catch(e){}
+  try{
+    $.ajaxSetup({scriptCharset:'utf-8'});
+    ajax_res = $.ajax({
+      type: 'POST',
+      async: false,
+      url: "upload/file,
+      dataType: 'json',
+      data:{
+          data: data,
+          filename: file.name,
+      },
+      success: function(data) {
+        console.log('success!');
+       }
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log('error!');
+      }
+  }).responseText;
+  }catch(e){}
   }
 }
 
@@ -53,12 +53,12 @@ function def_callback_file(data, file) {
 */
 
 function setev_change_inputimg($input, $func) {
-	$input.unbind();
-	$input.change(function(evt) {
-		var file = evt.target.files[0];
-		var reader = new FileReader();
-		reader.onload = function(event) {
-			var result = event.target.result;
+  $input.unbind();
+  $input.change(function(evt) {
+    var file = evt.target.files[0];
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      var result = event.target.result;
       var image = new Image();
       image.onload = function() {
         if ($func)
@@ -67,13 +67,13 @@ function setev_change_inputimg($input, $func) {
           def_callback_image(image, file, $input);
       };
       image.src = reader.result;
-		};
-		reader.onerror = function() {
-			console.log('file read error!' + file.fileName);
-		};
+    };
+    reader.onerror = function() {
+      console.log('file read error!' + file.fileName);
+    };
     reader.readAsDataURL(file);
     this.value=null;
-	});
+  });
 }
 
 ///default callback function
@@ -96,25 +96,25 @@ function def_callback_image(image, file, $input) {
   
   var dataurl = canvas.toDataURL("image/jpeg");
   dataurl = dataurl.replace(/^data:image\/[^;]*;base64,/, '');
-	try{
-  	$.ajaxSetup({scriptCharset:'utf-8'});
-  	ajax_res = $.ajax({
-  		type: 'POST',
-  		async: false,
-  		url: "upload/img,
-  		dataType: 'json',
-  		data:{
-  				data: dataurl,
-  		},
-  		success: function(data) {
-  		  console.log('success!');
-  		 }
-  		},
-  		error: function(XMLHttpRequest, textStatus, errorThrown) {
-  		  console.log('error!');
-  		}
-	}).responseText;
-	}catch(e){}
+  try{
+    $.ajaxSetup({scriptCharset:'utf-8'});
+    ajax_res = $.ajax({
+      type: 'POST',
+      async: false,
+      url: "upload/img,
+      dataType: 'json',
+      data:{
+          data: dataurl,
+      },
+      success: function(data) {
+        console.log('success!');
+       }
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log('error!');
+      }
+  }).responseText;
+  }catch(e){}
   }
   
 }
