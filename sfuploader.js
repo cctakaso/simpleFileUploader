@@ -29,7 +29,7 @@ function def_callback_file(data, file) {
     ajax_res = $.ajax({
       type: 'POST',
       async: false,
-      url: "upload/file,
+      url: "upload/file",
       dataType: 'json',
       data:{
           data: data,
@@ -101,7 +101,7 @@ function def_callback_image(image, file, $input) {
     ajax_res = $.ajax({
       type: 'POST',
       async: false,
-      url: "upload/img,
+      url: "upload/img",
       dataType: 'json',
       data:{
           data: dataurl,
