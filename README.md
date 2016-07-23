@@ -2,7 +2,7 @@
 simple uploader for image or text or binary others file.
 
 ##how to use
-
+...
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,3 +104,4 @@ div._img_input:hover {
 
 </body>
 </html>
+...
