@@ -7,23 +7,23 @@ function setev_change_inputfile($input, $func) {
   $input.change(function(evt) {
     var file = evt.target.files[0];
     var reader = new FileReader();
-		reader.onload = function(event) {
-			var binary = "";
-			var bytes = new Uint8Array(event.target.result);
-			var length = bytes.byteLength;
-			for (var i = 0; i < length; i++) {
-					binary += String.fromCharCode(bytes[i]);
-			}
-			$func(binary, file);
-			$input.value=null;
-		};
-		reader.onerror = function(event) {
-			console.log('file read error:' + file.fileName+" : "+reader.error);
-			$input.value=null;
-		};
-		//reader.readAsBinaryString(file); not support!
-		reader.readAsArrayBuffer(file);
-	});
+      reader.onload = function(event) {
+        var binary = "";
+        var bytes = new Uint8Array(event.target.result);
+        var length = bytes.byteLength;
+        for (var i = 0; i < length; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        $func(binary, file);
+        $input.value=null;
+      };
+      reader.onerror = function(event) {
+        console.log('file read error:' + file.fileName+" : "+reader.error);
+        $input.value=null;
+      };
+      //reader.readAsBinaryString(file); not support!
+      reader.readAsArrayBuffer(file);
+    });
 }
 
 
