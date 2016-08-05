@@ -15,14 +15,13 @@ function setev_change_inputfile($input, $func) {
           binary += String.fromCharCode(bytes[i]);
         }
         $func(binary, file);
-        $input.value=null;
       };
       reader.onerror = function(event) {
         console.log('file read error:' + file.fileName+" : "+reader.error);
-        $input.value=null;
       };
       //reader.readAsBinaryString(file); not support!
       reader.readAsArrayBuffer(file);
+      this.value=null;
     });
 }
 
